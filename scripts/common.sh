@@ -1,13 +1,13 @@
 NC="\e[0m"           # no color
 CYAN="\e[1m\e[1;96m" # cyan color
-RED="\e[1m\e[1;91m" # red color
+RED="\e[1m\e[1;91m"  # red color
 
 function printLogo {
   bash <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/logo.sh)
 }
 
 function printLine {
-  echo "---------------------------------------------------------------------------------------"
+  echo "======================================================================================="
 }
 
 function printCyan {
