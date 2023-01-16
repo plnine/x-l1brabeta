@@ -1,15 +1,15 @@
 #!/bin/bash
-#source <(curl -s https://github.com/plnine/x-l1bra/blob/main/scripts/common.sh)
+source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/common.sh)
 
-#printLogo
+printLogo
 
-#printLine
+printLine
 
 sudo apt update && sudo apt upgrade -y
 
 sudo apt install make clang pkg-config libssl-dev build-essential git gcc chrony curl jq ncdu htop net-tools lsof fail2ban wget -y
 
-#printLine
+printLine
 
 ver="1.19.1" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
@@ -20,7 +20,7 @@ echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile &
 source $HOME/.bash_profile && \
 go version
 
-#printLine
+printLine
 
 sleep 1
 
@@ -30,7 +30,7 @@ cd nibiru
 git checkout v0.16.3
 make build
 
-#printLine
+printLine
 
 sleep 1
 
@@ -46,7 +46,7 @@ echo 'export NIBIRU_CHAIN='${NIBIRU_CHAIN} >> $HOME/.bash_profile
 echo 'export NIBIRU_WALLET='${NIBIRU_WALLET} >> $HOME/.bash_profile
 source $HOME/.bash_profile
 
-#sleep 1
+sleep 1
 
 nibid init $NIBIRU_MONIKER --chain-id $NIBIRU_CHAIN
 
@@ -91,9 +91,9 @@ sudo systemctl enable nibid
 sudo systemctl restart nibid
 
 clear
-#printLogo
+printLogo
 
-#printLine
-#echo -e "Check logs:            ${CYAN}sudo journalctl -u $BINARY_NAME -f --no-hostname -o cat ${NC}"
-#echo -e "Check synchronization: ${CYAN}$BINARY_NAME status 2>&1 | jq .SyncInfo.catching_up${NC}"
-#echo -e "More commands:         ${CYAN}$CHEAT_SHEET${NC}"
+printLine
+echo -e "Check logs:            ${CYAN}sudo journalctl -u $BINARY_NAME -f --no-hostname -o cat ${NC}"
+echo -e "Check synchronization: ${CYAN}$BINARY_NAME status 2>&1 | jq .SyncInfo.catching_up${NC}"
+echo -e "More commands:         ${CYAN}$CHEAT_SHEET${NC}"
