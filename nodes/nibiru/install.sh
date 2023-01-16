@@ -36,7 +36,7 @@ printCyan "4.Download and install binary........"
 cd $HOME > /dev/null 2>&1
 git clone https://github.com/NibiruChain/nibiru.git
 cd nibiru > /dev/null 2>&1
-git checkout v0.17 > /dev/null 2>&1
+git checkout v0.16.3 > /dev/null 2>&1
 make build
 
 sudo mv ./build/nibid /usr/local/bin/ > /dev/null 2>&1
