@@ -2,7 +2,7 @@
 source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/common.sh)
 
 printLogo
-
+read -r -p "Enter node moniker: " NODE_MONIKER
 printLine
 
 sudo apt update && sudo apt upgrade -y
@@ -37,9 +37,10 @@ sleep 1
 sudo mv ./build/nibid /usr/local/bin/
 cd $HOME
 
-NIBIRU_MONIKER=nibiru
+
 NIBIRU_CHAIN="nibiru-testnet-2"
 NIBIRU_WALLET=wallet
+
 
 echo 'export NIBIRU_MONIKER='${NIBIRU_MONIKER} >> $HOME/.bash_profile
 echo 'export NIBIRU_CHAIN='${NIBIRU_CHAIN} >> $HOME/.bash_profile
