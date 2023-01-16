@@ -8,6 +8,7 @@ printRed  ======================================================================
 read -r -p "Enter node moniker: " NODE_MONIKER
 
 sleep 3
+clear
 source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/logo.sh)
 
 printCyan "Please wait for update........"
