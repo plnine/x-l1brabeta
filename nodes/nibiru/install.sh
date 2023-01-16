@@ -7,64 +7,55 @@ printRed  ======================================================================
 
 read -r -p "Enter node moniker: " NODE_MONIKER
 
-sleep 3
-clear
-source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/logo.sh)
-
-printCyan "Please wait for update........"
-
+printCyan "Please wait........"
+sleep 1
+printCyan "1. Update........"
 sudo apt update  > /dev/null 2>&1 && sudo apt upgrade -y  > /dev/null 2>&1
 printCyan "Updates uploaded."
-sleep 3
-clear
-source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/logo.sh)
-
-printCyan "Installing packages........"
+sleep 1
+printCyan "2.Installing packages........"
 sudo apt install make clang pkg-config libssl-dev build-essential git gcc chrony curl jq ncdu htop net-tools lsof fail2ban wget -y > /dev/null 2>&1
 printCyan "Installation completed."
 sleep 3
-printCyan "Install go and check the version........"
+printCyan "3.Installing go........"
 
-ver="1.19.1" && \ > /dev/null 2>&1
-wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \ > /dev/null 2>&1
-sudo rm -rf /usr/local/go && \
-sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
-rm "go$ver.linux-amd64.tar.gz" && \
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile && \
-source $HOME/.bash_profile && \
+ver="1.19.1" > /dev/null 2>&1 && \
+wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" > /dev/null 2>&1&& \
+sudo rm -rf /usr/local/go > /dev/null 2>&1 && \
+sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" > /dev/null 2>&1 && \
+rm "go$ver.linux-amd64.tar.gz" && > /dev/null 2>&1 && \
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile > /dev/null 2>&1 && \
+source $HOME/.bash_profile  > /dev/null 2>&1 && \
+
 go version
+printCyan "4.Download and install binary........"
+cd $HOME > /dev/null 2>&1
+git clone https://github.com/NibiruChain/nibiru.git > /dev/null 2>&1
+cd nibiru > /dev/null 2>&1
+git checkout v0.17 > /dev/null 2>&1
+make build > /dev/null 2>&1
+
+sudo mv ./build/nibid /usr/local/bin/ > /dev/null 2>&1
+cd $HOME > /dev/null 2>&1
+
+printCyan "5.Set variables........"
+sleep 1
+NIBIRU_CHAIN="nibiru-testnet-2" > /dev/null 2>&1
+NIBIRU_WALLET=wallet > /dev/null 2>&1
 
 
-sleep 13
-
-cd $HOME
-git clone https://github.com/NibiruChain/nibiru.git
-cd nibiru
-git checkout v0.16.3
-make build
-
-printCyan =======================================================================
-
-sleep 2
-
-sudo mv ./build/nibid /usr/local/bin/
-cd $HOME
-
-
-NIBIRU_CHAIN="nibiru-testnet-2"
-NIBIRU_WALLET=wallet
-
-
-echo 'export NIBIRU_MONIKER='${NIBIRU_MONIKER} >> $HOME/.bash_profile
-echo 'export NIBIRU_CHAIN='${NIBIRU_CHAIN} >> $HOME/.bash_profile
-echo 'export NIBIRU_WALLET='${NIBIRU_WALLET} >> $HOME/.bash_profile
-source $HOME/.bash_profile
-
+echo 'export NIBIRU_MONIKER='${NIBIRU_MONIKER} >> $HOME/.bash_profile > /dev/null 2>&1
+echo 'export NIBIRU_CHAIN='${NIBIRU_CHAIN} >> $HOME/.bash_profile > /dev/null 2>&1
+echo 'export NIBIRU_WALLET='${NIBIRU_WALLET} >> $HOME/.bash_profile > /dev/null 2>&1
+source $HOME/.bash_profile > /dev/null 2>&1
+printCyan "5.Ready"
 sleep 1
 
-nibid init $NIBIRU_MONIKER --chain-id $NIBIRU_CHAIN
+printCyan "6.Initialize the node........"
 
-nibid config chain-id $NIBIRU_CHAIN
+nibid init $NIBIRU_MONIKER --chain-id $NIBIRU_CHAIN > /dev/null 2>&1
+
+nibid config chain-id $NIBIRU_CHAIN > /dev/null 2>&1
 
 curl -s https://rpc.testnet-2.nibiru.fi/genesis | jq -r .result.genesis > $HOME/.nibid/config/genesis.json
 
@@ -103,9 +94,16 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable nibid
 sudo systemctl restart nibid
+sleep 5
 
-#clear
-printLogo
+sudo systemctl stop nibid
+NETWORK=nibiru-testnet-2
+sed -i 's|enable =.*|enable = true|g' $HOME/.nibid/config/config.toml
+sed -i 's|rpc_servers =.*|rpc_servers = "'$(curl -s https://networks.testnet.nibiru.fi/$NETWORK/rpc_servers)'"|g' $HOME/.nibid/config/config.toml
+sed -i 's|trust_height =.*|trust_height = "'$(curl -s https://networks.testnet.nibiru.fi/$NETWORK/trust_height)'"|g' $HOME/.nibid/config/config.toml
+sed -i 's|trust_hash =.*|trust_hash = "'$(curl -s https://networks.testnet.nibiru.fi/$NETWORK/trust_hash)'"|g' $HOME/.nibid/config/config.toml
+sudo systemctl restart nibid
+
 
 printLine
 echo -e "Check logs:            ${CYAN}sudo journalctl -u $BINARY_NAME -f --no-hostname -o cat ${NC}"
