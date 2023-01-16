@@ -13,15 +13,17 @@ source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/l
 
 printCyan "Please wait for update........"
 
-sudo apt update && sudo apt upgrade -y  > /dev/null 2>&1
-printCyan Updates uploaded.
+sudo apt update  > /dev/null 2>&1 && sudo apt upgrade -y  > /dev/null 2>&1
+printCyan "Updates uploaded."
 sleep 3
+clear
+source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/logo.sh)
 
-printCyan Installing packages........
+printCyan "Installing packages........"
 sudo apt install make clang pkg-config libssl-dev build-essential git gcc chrony curl jq ncdu htop net-tools lsof fail2ban wget -y > /dev/null 2>&1
-printCyan Installation completed.
-
-printCyan Install go and check the version........
+printCyan "Installation completed."
+sleep 3
+printCyan "Install go and check the version........"
 
 ver="1.19.1" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
