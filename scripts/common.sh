@@ -3,7 +3,7 @@ CYAN="\e[1m\e[1;96m" # cyan color
 RED="\e[1m\e[1;91m" # red color
 
 function printLogo {
-  bash <(curl -s https://github.com/plnine/x-l1bra/blob/main/logo.sh)
+  bash <(curl -s https://github.com/plnine/x-l1bra/blob/main/scripts/logo.sh)
 }
 
 function printLine {
