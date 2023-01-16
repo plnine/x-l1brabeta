@@ -8,9 +8,9 @@ printRed  ======================================================================
 read -r -p "Enter node moniker: " NODE_MONIKER
 
 sleep 3
+source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/logo.sh)
 
-
-printCyan Please wait for update........
+printCyan "Please wait for update........"
 
 sudo apt update && sudo apt upgrade -y  > /dev/null 2>&1
 printCyan Updates uploaded.
