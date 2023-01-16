@@ -91,7 +91,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable nibid
 sudo systemctl restart nibid
 
-clear
+#clear
 printLogo
 
 printLine
