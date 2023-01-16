@@ -2,8 +2,10 @@
 source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/common.sh)
 
 printLogo
+printCyan printLine 
+
 read -r -p "Enter node moniker: " NODE_MONIKER
-printLine
+
 
 sudo apt update && sudo apt upgrade -y
 
