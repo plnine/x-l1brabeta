@@ -2,16 +2,18 @@
 source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/common.sh)
 
 printLogo
-printCyan ======================================================================= 
+printRed  ======================================================================= 
 
-printRed read -r -p "Enter node moniker: " NODE_MONIKER
+read -r -p "Enter node moniker: " NODE_MONIKER
 
+sleep 3
 
 sudo apt update && sudo apt upgrade -y
 
 sudo apt install make clang pkg-config libssl-dev build-essential git gcc chrony curl jq ncdu htop net-tools lsof fail2ban wget -y
 
-printLine
+printCyan
+printCyan =======================================================================
 
 ver="1.19.1" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
@@ -22,9 +24,10 @@ echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile &
 source $HOME/.bash_profile && \
 go version
 
-printLine
+printCyan =======================================================================
 
-sleep 1
+
+sleep 3
 
 cd $HOME
 git clone https://github.com/NibiruChain/nibiru.git
@@ -32,9 +35,9 @@ cd nibiru
 git checkout v0.16.3
 make build
 
-printLine
+printCyan =======================================================================
 
-sleep 1
+sleep 2
 
 sudo mv ./build/nibid /usr/local/bin/
 cd $HOME
