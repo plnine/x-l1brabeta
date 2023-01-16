@@ -2,9 +2,9 @@
 source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/common.sh)
 
 printLogo
-printCyan printLine 
+printCyan ======================================================================= 
 
-read -r -p "Enter node moniker: " NODE_MONIKER
+printRed read -r -p "Enter node moniker: " NODE_MONIKER
 
 
 sudo apt update && sudo apt upgrade -y
