@@ -22,17 +22,18 @@ function printRed {
   echo -e "${RED}${1}${NC}"
 }
 
-function printRed {
+function printGreen {
   echo -e "${GREEN}${1}${NC}"
 }
 
-function printRed {
+function printYellow {
   echo -e "${YELLOW}${1}${NC}"
 }
-function printRed {
+function printPurple {
   echo -e "${PURPLE}${1}${NC}"
 }
-function printRed {
+
+function printBlue {
   echo -e "${BLUE}${1}${NC}"
 }
 

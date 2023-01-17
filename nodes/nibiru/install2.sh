@@ -10,22 +10,16 @@ printRed  ======================================================================
 
 read -r -p "Enter node moniker: " NODE_MONIKER
 
-cd || return > /dev/null 2>&1
-rm -rf nibiru > /dev/null 2>&1
-
 printCyan "Please wait........" && sleep 1
-printCyan "1. Update........" && sleep 1
-
+printYellow "1. Update........" && sleep 1
 sudo apt update  > /dev/null 2>&1 && sudo apt upgrade -y  > /dev/null 2>&1
+printGreen "Updates uploaded." && sleep 1
 
-printCyan "Updates uploaded." && sleep 1
-printCyan "2.Installing packages........" && sleep 1
-
+printYellow "2.Installing packages........" && sleep 1
 sudo apt install make clang pkg-config libssl-dev build-essential git gcc chrony curl jq ncdu htop net-tools lsof fail2ban wget -y > /dev/null 2>&1
+printGreen "Installation completed." && sleep 3
 
-printCyan "Installation completed." && sleep 3
 printCyan "3.Installing go........" && sleep 1
-
 ver="1.19.1" > /dev/null 2>&1 && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" > /dev/null 2>&1&& \
 sudo rm -rf /usr/local/go > /dev/null 2>&1 && \
@@ -33,10 +27,10 @@ sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" > /dev/null 2>&1 && \
 rm "go$ver.linux-amd64.tar.gz" > /dev/null 2>&1 && \
 echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile > /dev/null 2>&1 && \
 source $HOME/.bash_profile  > /dev/null 2>&1 && \
-
 go version
+printGreen "Completed."
 
-printCyan "4.Download and install binary........"
+printYellow "4.Download and install binary........"
 cd $HOME > /dev/null 2>&1
 git clone https://github.com/NibiruChain/nibiru.git
 cd nibiru > /dev/null 2>&1
