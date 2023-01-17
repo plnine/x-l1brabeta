@@ -13,11 +13,11 @@ read -r -p "Enter node moniker: " NODE_MONIKER
 cd || return > /dev/null 2>&1
 rm -rf nibiru > /dev/null 2>&1
 
-printCyan "Please wait........"
+printCyan "Пожалусйста подождите........"
 sleep 1
-printCyan "1. Update........"
+printCyan "1. Обновляем пакет........"
 sudo apt update  > /dev/null 2>&1 && sudo apt upgrade -y  > /dev/null 2>&1
-printCyan "Updates uploaded."
+printCyan "Обновление загруженно и установленно."
 sleep 1
 printCyan "2.Installing packages........"
 sudo apt install make clang pkg-config libssl-dev build-essential git gcc chrony curl jq ncdu htop net-tools lsof fail2ban wget -y > /dev/null 2>&1
