@@ -8,7 +8,7 @@ printLogo
 printRed  ======================================================================= 
 
 
-read -r -p "Enter node moniker: " NODE_MONIKER
+read -r -p "Введите имя ноды:" NODE_MONIKER
 
 cd || return > /dev/null 2>&1
 rm -rf nibiru > /dev/null 2>&1
