@@ -29,6 +29,8 @@ DEFUND
         exit 0
         ;;
     *)
+        clear
+        source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/logo.sh)
         echo "Неправильный вариант."
         mainmenu
         ;;
