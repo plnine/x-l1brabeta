@@ -24,8 +24,14 @@ printGreen "Installation completed." && sleep 1
 
 printYellow "3.Installing go........" && sleep 1
 #################################################
-source <(curl -s "https://raw.githubusercontent.com/nodejumper-org/cosmos-scripts/master/utils/go_install.sh") > /dev/null 2>&1
-  source .bash_profile
+cd $HOME  > /dev/null 2>&1
+ver="1.18.3"  > /dev/null 2>&1
+wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"  > /dev/null 2>&1
+sudo rm -rf /usr/local/go  > /dev/null 2>&1
+sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"  > /dev/null 2>&1
+rm "go$ver.linux-amd64.tar.gz"  > /dev/null 2>&1
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile  > /dev/null 2>&1
+source $HOME/.bash_profile  > /dev/null 2>&1
 go version
 #################################################
 printGreen "Completed."
@@ -36,8 +42,9 @@ cd $HOME || return > /dev/null 2>&1
 rm -rf celestia-app > /dev/null 2>&1
 git clone https://github.com/celestiaorg/celestia-app.git > /dev/null 2>&1
 cd celestia-app || return > /dev/null 2>&1
-git checkout v0.11.0
+git checkout v0.11.0 > /dev/null 2>&1
 make install > /dev/null 2>&1
+printCyan "Celestia version"
 celestia-appd version # 0.11.0
 #################################################
 printGreen "Completed."
@@ -53,7 +60,7 @@ echo -e "Node moniker:       ${CYAN}$NODE_MONIKER${NC}"
 echo -e "Chain id:           ${CYAN}$CHAIN_ID${NC}"
 echo -e "Chain demon:        ${CYAN}$CHAIN_DENOM${NC}"
 echo -e "Binary version tag: ${CYAN}$BINARY_VERSION_TAG${NC}"
-echo -e "IDENTITY:	     ${CYAN}$IDENTITY${NC}"
+echo -e "IDENTITY:           ${CYAN}$IDENTITY${NC}"
 #################################################
 printGreen "Completed." && sleep 1
 
@@ -122,6 +129,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable celestia-appd
 sudo systemctl start celestia-appd
 
+cd
 
 printGreen "Installation completed" && sleep 1
 
@@ -130,5 +138,6 @@ echo -e "Check logs:                ${CYAN} sudo journalctl -u celestia-appd -f 
 echo -e "Check synchronization:     ${CYAN} celestia-appd status 2>&1 | jq .SyncInfo.catching_up${NC}"
 echo -e "Add New Wallet:            ${CYAN} celestia-appd keys add wallet${NC}"
 echo -e "Recover Existing Wallet:   ${CYAN} celestia-appd keys add wallet --recover${NC}"
-echo -e "X-l1bra:   		    ${CYAN} https://t.me/xl1bra${NC}"
+echo -e "X-l1bra:                   ${CYAN} https://t.me/xl1bra${NC}"
 printRed  =============================================================================== 
+ 
