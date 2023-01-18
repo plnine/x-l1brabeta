@@ -120,6 +120,7 @@ printRed  ======================================================================
 echo -e "Check logs:                ${CYAN} sudo journalctl -u celestia-appd -f --no-hostname -o cat ${NC}"
 echo -e "Check synchronization:     ${CYAN} celestia-appd status 2>&1 | jq .SyncInfo.catching_up${NC}"
 echo -e "Add New Wallet:            ${CYAN} celestia-appd keys add wallet${NC}"
+echo -e "Add New Orchestrator:      ${CYAN} celestia-appd keys add orchestrator${NC}"
 echo -e "Recover Existing Wallet:   ${CYAN} celestia-appd keys add wallet --recover${NC}"
 echo -e "X-l1bra:                   ${CYAN} https://t.me/xl1bra${NC}"
 printRed  =============================================================================== 
