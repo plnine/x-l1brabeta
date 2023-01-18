@@ -5,6 +5,7 @@ clear && source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/
 
 printLogo
 printRed  ======================================================================= 
+source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/nodes/nibiru/asciinibiru.sh)
 read -r -p "Enter node moniker:" NIBIRU_MONIKER
 
 
@@ -52,8 +53,8 @@ printGreen "Completed."
 
 printYellow "5.Set variables........" && sleep 1
 #################################################
-NIBIRU_CHAIN="nibiru-testnet-2" > /dev/null
-NIBIRU_WALLET=wallet > /dev/null
+NIBIRU_CHAIN="nibiru-testnet-2" > /dev/null 2>&1
+NIBIRU_WALLET=wallet > /dev/null 2>&1
 IDENTITY="8F3C23EC3306B513"
 echo 'export NIBIRU_MONIKER='${CYAN}${NIBIRU_MONIKER} >> $HOME/.bash_profile
 echo 'export NIBIRU_CHAIN='${CYAN}${NIBIRU_CHAIN} >> $HOME/.bash_profile
