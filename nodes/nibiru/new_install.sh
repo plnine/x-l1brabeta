@@ -2,6 +2,7 @@
 #X-l1bra  
 clear && source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/common.sh)
 
+
 printLogo
 printRed  ======================================================================= 
 read -r -p "Enter node moniker:" NIBIRU_MONIKER
@@ -19,7 +20,7 @@ printYellow "2.Installing packages........" && sleep 1
 #################################################
 sudo apt install make clang pkg-config libssl-dev build-essential git gcc chrony curl jq ncdu htop net-tools lsof fail2ban wget -y > /dev/null 2>&1
 #################################################
-printGreen "Installation completed." && sleep 3
+printGreen "Installation completed." && sleep 1
 
 
 printYellow "3.Installing go........" && sleep 1
