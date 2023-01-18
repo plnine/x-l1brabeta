@@ -54,7 +54,6 @@ git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app || return
 git checkout v0.11.0 > /dev/null 2>&1
 make install > /dev/null 2>&1
-printCyan "Celestia version" && sleep 1
 celestia-appd version # 0.11.0
 
 printYellow "7.Initialize the node........" && sleep 1
