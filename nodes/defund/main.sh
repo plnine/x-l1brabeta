@@ -20,10 +20,10 @@ DEFUND
         ;;
     3)  
     	delet
-    	:;
+    	;;
     4)
         help
-        :;
+        ;;
     0)
         echo "Bye bye."
         exit 0
@@ -36,19 +36,19 @@ DEFUND
 }
 
 install(){
-
+echo
 }
 
 update(){
-
+echo
 }
 
 delet(){
-
+echo
 }
 
 help(){
-
+echo
 }
 
 mainmenu
