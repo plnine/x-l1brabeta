@@ -4,6 +4,7 @@ clear && source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/
 
 
 printLogo
+clear && source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/nodes/celestia/asciicelestia.sh)
 printRed  =======================================================================
 read -r -p "Enter node moniker:" NODE_MONIKER
 
