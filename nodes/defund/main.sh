@@ -1,12 +1,13 @@
 #! /bin/bash
 source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/common.sh)
+
 mainmenu() {
     echo -ne "
 DEFUND
-(greenprint '1)') Установить
-2) Обновить
-3) Удалить
-4) Помощь
+$(greenprint   '1) Установить')
+$(yellowprint  '2) Обновить')
+$(redprint     '3) Удалить')
+$(magentaprint '4) Помощь')
 5) Вернутся назад
 0) Выйти
 Введите цифру:  "
