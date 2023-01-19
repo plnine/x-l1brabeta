@@ -39,7 +39,8 @@ DEFUND
 
 install(){
 printLogo
-echo
+printLine
+mainmenu
 }
 
 update(){
