@@ -3,7 +3,7 @@ source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/c
 mainmenu() {
     echo -ne "
 DEFUND
-printGreen 1) Установить
+(greenprint '1)') Установить
 2) Обновить
 3) Удалить
 4) Помощь
