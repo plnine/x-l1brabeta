@@ -3,6 +3,7 @@ clear
 source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/scripts/common.sh)
 printLogo
 printRed  ======================================================================= 
+
 mainmenu() {
     echo -ne "
 $(cyanprint    'Вы действительно хотите начать установку !')
@@ -26,6 +27,9 @@ $(redprint     '2)') Нет
         mainmenu
         ;;
     esac
+}
+no(){
+source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/nodes/defund/main.sh)
 }
 
 yes(){
