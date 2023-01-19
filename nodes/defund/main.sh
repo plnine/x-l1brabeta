@@ -42,9 +42,7 @@ $(redprint     '0)') Выйти
 }
 
 install(){
-printLogo
-printLine
-mainmenu
+source <(curl -s https://raw.githubusercontent.com/plnine/x-l1bra/main/nodes/defund/install.sh)
 }
 
 update(){
