@@ -5,7 +5,7 @@ printLogo
 printRed  ======================================================================= 
 mainmenu() {
     echo -ne "
-    Начать установку !
+$(cyanprint    'Вы действительно хотите начать установку !')
 $(yellowprint 'DEFUND')
 $(greenprint   '1)') Да
 $(redprint     '2)') Нет
