@@ -45,12 +45,12 @@ function addToPath {
   fi
 }
 
-### Colors ##
-ESC=$(printf '\033') RESET="${ESC}[0m" BLACK="${ESC}[30m" RED="${ESC}[31m"
-GREEN="${ESC}[92m" YELLOW="${ESC}[93m" BLUE="${ESC}[34m" MAGENTA="${ESC}[35m"
-CYAN="${ESC}[36m" WHITE="${ESC}[37m" DEFAULT="${ESC}[39m"
 
-### Color Functions ##
+ESC=$(printf '\033') RESET="${ESC}[0m" BLACK="${ESC}[30m" RED="${ESC}[91m"
+GREEN="${ESC}[92m" YELLOW="${ESC}[93m" BLUE="${ESC}[94m" MAGENTA="${ESC}[95m"
+CYAN="${ESC}[96m" WHITE="${ESC}[97m" DEFAULT="${ESC}[39m"
+
+
 
 greenprint() { printf "${GREEN}%s${RESET}\n" "$1"; }
 blueprint() { printf "${BLUE}%s${RESET}\n" "$1"; }
